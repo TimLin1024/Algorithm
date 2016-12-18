@@ -1,4 +1,6 @@
-
+package fundamental;
+import lib.StdIn;
+import lib.StdOut;
 
 public class FixedCapacityStackOfString {
 	private String [] a;

@@ -1,3 +1,4 @@
+package fundamental;
 
 public class FixedCapacityStack<Item> {
 	Item[] a;

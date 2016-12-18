@@ -1,4 +1,8 @@
+package fundamental;
 import java.util.Iterator;
+
+import lib.StdIn;
+import lib.StdOut;
 
 
 public class Stack <Item> implements Iterable<Item>{
@@ -35,16 +39,16 @@ public class Stack <Item> implements Iterable<Item>{
 	}
 	
 	public static void main(String[] args) {
-//		Stack<String> stack = new Stack<>();
-//		while (!StdIn.isEmpty()) {
-//			String s = StdIn.readString();
-//			if (!s.equals("-")) {
-//				stack.push(s);
-//			}else if (!s.isEmpty()) {
-//				StdOut.print(stack.pop() + " ");
-//			}
-//		}
-//		StdOut.println("(" + stack.size() + " left on stack)");
+		Stack<String> stack = new Stack<>();
+		while (!StdIn.isEmpty()) {
+			String s = StdIn.readString();
+			if (!s.equals("-")) {
+				stack.push(s);
+			}else if (!s.isEmpty()) {
+				StdOut.print(stack.pop() + " ");
+			}
+		}
+		StdOut.println("(" + stack.size() + " left on stack)");
 	}
 	
 }

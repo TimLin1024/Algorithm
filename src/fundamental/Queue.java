@@ -1,6 +1,10 @@
+package fundamental;
 import java.util.Iterator;
 
 import javax.lang.model.element.Element;
+
+import lib.StdIn;
+import lib.StdOut;
 
 public class Queue<Item> implements Iterable<Item> {
 

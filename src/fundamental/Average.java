@@ -1,3 +1,6 @@
+package fundamental;
+import lib.StdIn;
+import lib.StdOut;
 
 public class Average {
 	public static void main(String[] args) {
