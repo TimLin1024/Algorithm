@@ -32,6 +32,9 @@ public class Stack <Item> implements Iterable<Item>{
 		N--;
 		return item;
 	}
+	public Item peek() {
+		return first.item;
+	}
 	
 	@Override
 	public Iterator<Item> iterator() {
@@ -50,5 +53,4 @@ public class Stack <Item> implements Iterable<Item>{
 		}
 		StdOut.println("(" + stack.size() + " left on stack)");
 	}
-	
 }

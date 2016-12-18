@@ -3,7 +3,7 @@ import java.util.Iterator;
 
 public class ResizingArrayStack<Item> implements Iterable<Item>{
 
-	Item[] a = (Item[])new Object[1];
+	private Item[] a = (Item[])new Object[1];
 	private int N = 0;
 	
 	public boolean isEmpty(){
@@ -57,7 +57,5 @@ public class ResizingArrayStack<Item> implements Iterable<Item>{
 		public void remove(){
 			
 		}
-		
 	}
-
 }
