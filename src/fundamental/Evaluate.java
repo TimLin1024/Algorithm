@@ -3,8 +3,9 @@ package fundamental;
 
 import java.util.Stack;
 
-import lib.StdIn;
-import lib.StdOut;
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
+
 
 
 public class Evaluate {

@@ -1,6 +1,7 @@
 package fundamental;
-import lib.StdIn;
-import lib.StdOut;
+
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
 
 public class Parentheses {
 	//Stack的测试用例Partenteses，从标准流中读取一个文本流并使用栈判断其中的括号是否匹配完整

@@ -3,8 +3,10 @@ import java.util.Iterator;
 
 import javax.lang.model.element.Element;
 
-import lib.StdIn;
-import lib.StdOut;
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
+
+
 
 public class Queue<Item> implements Iterable<Item> {
 

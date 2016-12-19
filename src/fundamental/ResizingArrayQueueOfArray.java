@@ -2,8 +2,9 @@ package fundamental;
 
 import java.util.Iterator;
 
-import lib.StdIn;
-import lib.StdOut;
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
+
 
 public class ResizingArrayQueueOfArray<Item> implements Iterable<Item>{
 	

@@ -1,6 +1,7 @@
 package fundamental;
-import lib.StdIn;
-import lib.StdOut;
+
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
 
 public class Average {
 	public static void main(String[] args) {
