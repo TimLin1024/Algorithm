@@ -12,11 +12,11 @@ public class Ex1_3_10InfixToPostFix {
 	public static void readWithScanner() {
 		Stack<String> ops = new Stack<>();
 		Stack<String> vals = new Stack<>();
-		Scanner scanner = new Scanner(System.in);
-		
-		while (scanner.hasNext()) {
-//			String s = scanner.next();
-			String s = scanner.nextLine();
+		//如果输入完成后按下 ctrl + z 那么,会导致读取不到东西;
+		//如果按下enter键，则会进行读取，但是会进入死循环。
+		//先按下enter然后进行ctrl + z，就可以成功读取并且退出循环
+		while (!StdIn.isEmpty()) {
+			String s = StdIn.readString();
 			if (s.equals("(")) {
 			} else if (s.equals("+") || s.equals("-") || s.equals("*") || s.equals("/") || s.equals("sqrt")) {
 				ops.push(s);// 操作符入操作符栈
