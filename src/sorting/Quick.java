@@ -37,7 +37,7 @@ public class Quick {
 		sort(a, j+1, hi);
 	}
 	private static int partition(Comparable[] a, int lo, int hi) {
-		int i = lo; //左扫描指针, 不加1因为 lo 会被选为切分元素
+		int i = lo; // 左扫描指针, 不加1因为 lo 会被选为切分元素
 		int j = hi + 1;//右扫描指针，加1因为--j
 		Comparable v = a[lo];//切分元素
 		while (true) {
