@@ -13,7 +13,7 @@ public class Ex1_3_10InfixToPostFix {
 		Stack<String> ops = new Stack<>();
 		Stack<String> vals = new Stack<>();
 		//如果输入完成后按下 ctrl + z 那么,会导致读取不到东西;
-		//如果按下enter键，则会进行读取，但是会进入死循环。
+		//如果按下enter键，则会进行读取，但是会进入死循环;
 		//先按下enter然后进行ctrl + z，就可以成功读取并且退出循环
 		while (!StdIn.isEmpty()) {
 			String s = StdIn.readString();
@@ -32,11 +32,10 @@ public class Ex1_3_10InfixToPostFix {
 				vals.push(val);
 			} else if (s.equals("z")) {
 				break;
-			}else {// 不是+ - / * sqrt 就入数值栈
+			}else {// 不是+ - / * sqrt 或者 ( )  就入数值栈
 				vals.push(s);
 			}
 		}
-		
 		System.out.println("vals.isEmpty(): " + vals.isEmpty());
 		if (!vals.isEmpty()) {
 			StdOut.println(vals.pop());
