@@ -2,9 +2,13 @@ package fundamental;
 
 import java.util.Arrays;
 
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdIn;
+//二分查找重写 （用于从整数集合中进行查找的一种抽象数据类型）
 public class StaticSETofInts {
 	private int[] a;
 	public StaticSETofInts(int[] keys) {
+		a = new int[keys.length];
 		for (int i = 0; i < keys.length; i++) {
 			a[i] = keys[i];//保护性复制
 		}
@@ -46,5 +50,15 @@ public class StaticSETofInts {
 			}
 		}
 		return -1;
+	}
+	public static void main(String[] args) {
+		int[] whiteList = In.readInts("tinyW.txt");
+		StaticSETofInts setofInts = new StaticSETofInts(whiteList);
+		while (!StdIn.isEmpty()) {
+			int key = StdIn.readInt();
+			if (!setofInts.contains(key)) {
+				System.out.println(key);
+			}
+		}
 	}
 }

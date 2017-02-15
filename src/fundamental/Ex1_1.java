@@ -1,8 +1,26 @@
 package fundamental;
 
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.AbstractMap;
 import java.util.Arrays;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
+
+import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
+
 //练习1.1中部分题目的解答
 public class Ex1_1 {
 
@@ -169,12 +187,156 @@ public class Ex1_1 {
 			System.out.println();
 		}
 	}
-	public static void main(String[] args) {
-		System.out.println(lg(5));
-		System.out.println(exR1(6));
-		System.out.println(mysteryMuti(2, 25));
-		System.out.println(mysteryMuti(1, 11));
-		System.out.println(mysteryMuti(2, 11));
 
+	public static long ex_1_1_19f(int n) {
+		if (n == 0) {
+			return 0;
+		}
+		if (n == 1) {
+			return 1;
+		}
+		return ex_1_1_19f(n - 1) + ex_1_1_19f(n - 2);
+	}
+
+	public static long fib(int N) {
+		long[] f = new long[N + 1];
+		fib(N, f);
+		return f[N];
+	}
+
+	private static long fib(int N, long[] f) {
+		if (f[N] == 0) {
+			if (N == 1) {
+				f[N] = 1;
+			} else if (N > 1) {
+				f[N] = fib(N - 1) + fib(N - 2);
+			}
+		}
+		return f[N];
+	}
+
+	public static double lnNFactorial(int N) {
+		if (N == 1 || N == 0) {
+			return 0;
+		}
+		return Math.log1p(N) + lnNFactorial(N - 1);
+	}
+
+	// readAllStrings()的读取结果为字符串数组，凡是遇到空格或换行时自动创建新数组
+	public static void ex1_1_21Answer() {
+		String[] strings = StdIn.readAllStrings();
+		int N = strings.length / 3;
+		for (int i = 0; i < N; i++) {
+			String name = strings[3 * i];
+			int mathgrade = Integer.parseInt(strings[3 * i + 1]);
+			int avggrade = Integer.parseInt(strings[3 * i + 2]);
+			double percentage = (double) mathgrade / avggrade;
+			StdOut.printf("%s" + "|" + "%d" + "|" + "%d" + "|" + "%.3f\n", name, mathgrade, avggrade, percentage);
+		}
+	}
+
+	public static void ex1_1_21() {
+		Scanner scanner = new Scanner(System.in);
+		String string = null;
+		File file = new File("str.txt");
+		BufferedWriter bufferedWriter = null;
+		try {
+			bufferedWriter = new BufferedWriter(new FileWriter(file));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		while (scanner.hasNext()) {
+			string = scanner.nextLine();
+			if (string.equals("exit")) {
+				break;
+			}
+			try {
+				bufferedWriter.write(string);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		try {
+			BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+			while (bufferedReader.read() != -1) {
+				String s = bufferedReader.readLine();
+				String name = s.substring(0, s.indexOf(" "));
+				String num = s.substring(s.indexOf(" ")).trim();
+				System.out.println(name + "\t" + num);
+			}
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	// 截取数字
+	private static String getNumber(String content) {
+		Pattern pattern = Pattern.compile("\\d+");
+		Matcher matcher = pattern.matcher(content);
+		while (matcher.find()) {
+			return matcher.group(0);
+		}
+		return "";
+	}
+
+	// 截取非数字
+	private static String getNonNumber(String content) {
+		Pattern pattern = Pattern.compile("\\D+");
+		Matcher matcher = pattern.matcher(content);
+		while (matcher.find()) {
+			return matcher.group(0);
+		}
+		return "";
+	}
+
+	public static int rank(int key, int[] a) {
+		if (a == null) {
+			throw new IllegalArgumentException("ary can't be null");
+		}
+		return rank(key, a, 0, a.length - 1, 1);
+	}
+
+	public static int rank(int key, int[] a, int lo, int hi, int depth) {
+		if (lo > hi) {
+			return -1;
+		}
+		int mid = lo + (hi - lo) / 2;
+		for (int i = 0; i < depth; i++) {
+			System.out.print(" ");
+		}
+		System.out.println("lo:" + lo + ",hi:" + hi);
+		if (a[mid] > key) {
+			return rank(key, a, lo, mid - 1, ++depth);
+		} else if (a[mid] < key) {
+			return rank(key, a, mid + 1, hi, ++depth);
+		} else {
+			return mid;
+		}
+	}
+	public static double binomial(int N, int k, double p) {
+		return binomial(N, k, p,1);
+	}
+	public static double binomial(int N, int k, double p,int count) {
+		if (N == 0 && k == 0){
+			System.out.println("count: "+count);
+			return 1.0;
+		}
+		if (N < 0 || k < 0){
+			System.out.println("N < 0 || k < 0 "+count);
+			return 0.0;
+		}
+		return (1.0 - p) * binomial(N - 1, k, p,++count) + p * binomial(N - 1, k - 1, p,++count);
+	}
+
+	public static void main(String[] args) {
+		binomial(10, 5, 0.25);
 	}
 }

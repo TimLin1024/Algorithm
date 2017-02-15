@@ -1,31 +1,23 @@
 package fundamental;
 
+import java.util.Arrays;
+
 import javax.sound.midi.MidiChannel;
 
-public class BinarySearch {
-	// 错啦！ 要有low和high来规定范围
-	// public static int rank(int[] a,int num) {
-	// int mid = a.length / 2;
-	// while (mid >= 0) {
-	// if (a[mid] > num) {
-	// mid = (mid + a.length) / 2;
-	// }else if (a[mid] < num) {
-	// mid = mid / 2;
-	// }else {
-	// return mid;
-	// }
-	// }
-	// return -1;
-	// }
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
 
-	public static int rank(int[] a, int num) {
+public class BinarySearch {
+
+	public static int rank(int[] a, int key) {
 		int low = 0;
 		int high = a.length - 1;
 		int mid = (low + high) / 2;
 		while (low <= high) {
-			if (a[mid] > num) {
+			if (a[mid] > key) {
 				high = mid - 1;
-			} else if (a[mid] < num) {
+			} else if (a[mid] < key) {
 				low = mid + 1;
 			} else {
 				return mid;
@@ -87,4 +79,50 @@ public class BinarySearch {
 	// return -1;
 	// }
 	// }
+	
+	public static int rank(int key, int[] a) {
+		if (a == null) {
+			throw new IllegalArgumentException("ary can't be null");
+		}
+		return rank(key, a, 0, a.length-1, 1);
+	}
+
+	public static int rank(int key, int[] a, int lo, int hi, int depth) {
+		if (lo > hi) {
+			return -1;
+		}
+		int mid = lo + (hi - lo) / 2;
+//		//打印缩进与 lo hi
+//		for (int i = 0; i < depth; i++) {
+//			System.out.print(" ");
+//		}
+//		System.out.println("lo:" + lo + ",hi:" + hi);
+		if (a[mid] > key) {
+			return rank(key, a, lo, mid - 1, ++depth);
+		} else if (a[mid] < key) {
+			return rank(key, a, mid + 1, hi, ++depth);
+		} else {
+			return mid;
+		}
+	}
+	
+	public static void main(String[] args) {
+		int[] whiteList = In.readInts(args[0]);
+		Arrays.sort(whiteList);
+		System.out.println(Arrays.toString(whiteList));
+//		while (!StdIn.isEmpty()) {
+//			int key = StdIn.readInt();
+//			if (rank(key, whiteList) < 0) {
+//				StdOut.println(key);
+//			}
+//		}
+		int[] inputList = In.readInts(args[1]);
+		for (int i = 0; i < inputList.length; i++) {
+			if (rank(inputList[i], whiteList) < 0) {
+				System.out.println("-"+inputList[i]);
+			}else{
+				System.out.println("+"+inputList[i]);
+			}
+		}
+	}
 }
