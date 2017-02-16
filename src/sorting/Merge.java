@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import edu.princeton.cs.algs4.Insertion;
 import edu.princeton.cs.algs4.StdRandom;
-import fundamental.Stopwatch;
+import fundamental.algorithm_analysis1_4.Stopwatch;
 
 public class Merge {
 	private static Comparable[] aux;// 归并所需的辅助数组

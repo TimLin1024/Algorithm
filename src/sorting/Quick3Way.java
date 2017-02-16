@@ -3,7 +3,7 @@ package sorting;
 import java.util.Arrays;
 
 import edu.princeton.cs.algs4.StdRandom;
-import fundamental.Stopwatch;
+import fundamental.algorithm_analysis1_4.Stopwatch;
 
 public class Quick3Way {
 	
