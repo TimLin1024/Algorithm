@@ -36,7 +36,7 @@ public class ThreeSum {
 		}
 
 	public static void main(String[] args) {
-		int[] a = In.readInts(args[0]);
+		int[] a = In.readInts("8Kints.txt");
 		StdOut.println(count(a));
 	}
 }

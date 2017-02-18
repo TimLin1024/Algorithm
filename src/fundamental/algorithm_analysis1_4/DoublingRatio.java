@@ -1,5 +1,7 @@
 package fundamental.algorithm_analysis1_4;
 
+import java.util.Stack;
+
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 
@@ -18,6 +20,7 @@ public class DoublingRatio {
 	
 	
 	public static void main(String[] args) {
+		
 		double prev = timeTrail(125);
 		for(int N = 250 ; true; N+=N){
 			double time = timeTrail(N);

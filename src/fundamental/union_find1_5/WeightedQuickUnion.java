@@ -1,5 +1,8 @@
 package fundamental.union_find1_5;
 
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdIn;
+
 public class WeightedQuickUnion {
 	private int[] id;// 父链接数组，由触点索引
 	private int[] sz;// (由触点索引的)各个根节点所对应的分量的大小
@@ -29,20 +32,43 @@ public class WeightedQuickUnion {
 		return p;
 	}
 
+	public int findCompress(int p) {
+		// 跟随链接找到 根节点
+		int root = p;
+		while (root != id[root]) {
+			root = id[root];
+		}
+		;
+		while (p != root) {
+			int newP = id[p];
+			id[p] = root;
+			p = newP;
+		}
+		return root;
+	}
+
 	public void union(int p, int q) {
 		int pRoot = find(p);
 		int qRoot = find(q);
-		if (pRoot == qRoot) {
+		if (pRoot == qRoot) { // 这里不能改为pRoot != qRoot,然后直接进行 不等 情况下的操作。
+								// 因为count--是在不等条件下进行的
 			return;
 		}
 		if (sz[pRoot] > sz[qRoot]) {
 			id[qRoot] = pRoot;
 			sz[pRoot] = sz[pRoot] + sz[qRoot];
-		}else if (sz[pRoot] < sz[qRoot]) {
+		} else if (sz[pRoot] < sz[qRoot]) {
 			id[qRoot] = pRoot;
 			sz[qRoot] = sz[pRoot] + sz[qRoot];
 		}
-		
-		count--;//连通后，连通分量总数少1
+		count--;// 连通后，连通分量总数少1
+	}
+
+	public static void main(String[] args) {
+		int[] ary = In.readInts("medium.txt");
+		WeightedQuickUnion weightedQuickUnion = new WeightedQuickUnion(ary[0]);
+		for (int i = 1; i < ary.length; i += 2) {
+			weightedQuickUnion.union(ary[i],ary[i+1]);
+		}
 	}
 }

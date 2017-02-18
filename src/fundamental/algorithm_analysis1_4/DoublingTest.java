@@ -26,7 +26,7 @@ public class DoublingTest {
 			//打印问题规模为N时程序的用时
 			ary[i] = N;
 			time[i++] = timeTrail(N);
-//			StdOut.printf("%7d %5.1f\n", N, time);
+			StdOut.printf("%7d %5.1f\n", N, time[i]);
 			
 		}
 		drawStandard(ary, time);
