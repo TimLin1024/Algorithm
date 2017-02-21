@@ -3,6 +3,7 @@ package sorting;
 import java.util.Arrays;
 
 import edu.princeton.cs.algs4.Insertion;
+import sorting.quicksort2_3.Quick;
 
 public class OrderedAryMaxPQ<T extends Comparable<T>> {
 	
