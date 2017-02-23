@@ -1,16 +1,28 @@
-package sorting;
+package sorting.application;
 
+import java.util.Comparator;
+
+//基于堆的优先队列
 public class MaxPQ<T extends Comparable<T>> {
 
 	private T[] pq;// 基于堆的完全二叉树
 	private int N = 0;// 存储于pq[1..N], pq[0]没有使用
-
+	private Comparator<T> mComparator;
+	
 	public MaxPQ(int maxN) {
 		pq = (T[]) new Comparable[maxN];
 	}
+	
+	public MaxPQ(Comparator<T> comparator) {
+		mComparator = comparator;
+	}
 
 	private boolean less(int i, int j) {
-		return pq[i].compareTo(pq[j]) < 0;
+		if (mComparator == null) {
+			return pq[i].compareTo(pq[j]) < 0;
+		}else{
+			return mComparator.compare(pq[i], pq[j]) < 0;
+		}
 	}
 
 	private void exch(int i, int j) {

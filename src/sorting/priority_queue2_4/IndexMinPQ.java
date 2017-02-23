@@ -1,4 +1,4 @@
-package sorting;
+package sorting.priority_queue2_4;
 
 import java.util.Arrays;
 import java.util.Calendar;

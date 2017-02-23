@@ -1,7 +1,7 @@
-package sorting;
+package sorting.priority_queue2_4;
 
 /**
- * 有序数组实现链表
+ * 有序数组实现优先队列
  * 
  **/
 public class OrderedArrayPQ<Key extends Comparable<Key>> {
