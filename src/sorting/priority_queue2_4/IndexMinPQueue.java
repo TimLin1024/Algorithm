@@ -1,4 +1,4 @@
-package sorting;
+package sorting.priority_queue2_4;
 
 /******************************************************************************
  *  Compilation:  javac IndexMinPQ.java
@@ -46,6 +46,12 @@ import edu.princeton.cs.algs4.StdOut;
 public class IndexMinPQueue<Key extends Comparable<Key>> implements Iterable<Integer> {
     private int maxN;        // maximum number of elements on PQ
     private int n;           // number of elements on PQ
+	//key[pq[1] pq[2] ... pq[n]] 遍历pq将其值作为 keys的索引 可以刻画出堆
+    /**
+	 * pq是堆，下标是堆中位置，值是插入顺序（即索引）
+	 * qp是索引数组，下标是插入顺序（即索引），值是堆中位置
+	 * key是对象数组，下标是插入顺序（即索引），值是对象本身
+	 **/
     private int[] pq;        // binary heap using 1-based indexing
     private int[] qp;        // inverse of pq - qp[pq[i]] = pq[qp[i]] = i
     private Key[] keys;      // keys[i] = priority of i

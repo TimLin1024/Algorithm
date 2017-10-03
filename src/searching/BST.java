@@ -1,4 +1,4 @@
-package sorting;
+package searching;
 
 import edu.princeton.cs.algs4.Queue;
 

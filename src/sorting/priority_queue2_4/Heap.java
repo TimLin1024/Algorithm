@@ -1,4 +1,4 @@
-package sorting;
+package sorting.priority_queue2_4;
 
 import java.util.Arrays;
 
@@ -91,5 +91,6 @@ public class Heap {
 		Heap.sort(a);
   		System.out.println("Sorted array " + Arrays.toString(a));
         assert isSorted(a);
+        String[] strings = new String[MAX];
     }
 }
